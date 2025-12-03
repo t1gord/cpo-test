@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\TaskStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->mediumText('description');
-            $table->enum('status', ['planned', 'in_progress', 'done'])->default('planned');
+            $table->enum('status', TaskStatusEnum::cases())->default(TaskStatusEnum::Planned->value);
             $table->date('completion_date')->nullable();
 
             $table->unsignedBigInteger('user_id');
