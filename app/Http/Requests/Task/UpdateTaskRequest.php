@@ -23,6 +23,7 @@ class UpdateTaskRequest extends Request
                 'in' => Rule::enum(TaskStatusEnum::class),
             ],
             'completion_date' => 'date',
+            'file' => 'file|max:2048',
         ];
     }
 }
